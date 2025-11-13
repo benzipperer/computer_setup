@@ -1,0 +1,169 @@
+---
+title: "Computer Setup Instructions"
+subtitle: "Last used 11 November 2025, Ubuntu 24.04"
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: repo
+---
+
+## Preliminaries
+### Update everything
+
+```bash
+sudo apt update && sudo apt -y upgrade
+```
+
+Reboot.
+
+## Dropbox + browser
+
+* [Dropbox](https://www.dropbox.com/install-linux?_tk=install_view) + selective sync
+* [Brave](https://brave.com/download/) + sync
+
+## Dotfiles
+
+```bash
+sudo apt install stow
+cd ~/Dropbox/dotfiles
+./install.sh
+./fix_ssh_perms.sh
+```
+## R
+
+### Latest release
+
+```bash
+sudo apt install curl
+sudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg
+sudo sh -c 'echo "deb http://rig.r-pkg.org/deb rig main" > /etc/apt/sources.list.d/rig.list'
+sudo apt update
+sudo apt install r-rig
+```
+Then
+```bash
+rig add release
+```
+
+### Packages
+
+Confirm R works and then in R confirm binaries are being downloaded from PPM:
+```r
+install.packages("usethis")
+```
+Then
+```r
+packages = c(
+  "usethis",
+  "devtools",
+  "tidyverse",
+  "targets",
+  "tarchetypes",
+  "arrow",
+  "ipumsr",
+  "fs",
+  "crew",
+  "openalexR"
+)
+r_univ_packages = c("epiextractr", "epidatatools", "realtalk")
+gh_packages = c(
+  "MilesMcBain/breakerofchains",
+  "benzipperer/bzipr",
+  # includes some additions to Miles McBain's tflow:
+  "benzipperer/tflow"
+)
+
+install.packages(packages)
+install.packages(r_univ_packages, repos = c("https://economic.r-universe.dev", "https://cloud.r-project.org"))
+remotes::install_github(gh_packages)
+
+fs::dir_create("~/data/cps")
+purrr::walk(c("basic", "org", "may"), ~ epiextractr::download_cps(.x, "~/data/cps"))
+```
+
+## Tailscale
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+```
+Confirm ssh to machines works.
+
+## Obsidian
+
+### Install and sync
+
+```bash
+sudo apt install libfuse2
+```
+Find path to Obsidian AppImage [here](https://obsidian.md/download), then
+
+ ```bash
+ mkdir -p ~/obsidian
+ mkdir -p ~/projects
+ wget OBSIDIANURL -O ~/obsidian/Obsidian.AppImage
+ chmod +x ~/obsidian/Obsidian.AppImage
+ ~/obsidian/Obsidian.AppImage --no-sandbox
+ ```
+
+Set up sync to `~/projects/obsidian`.
+
+### Desktop entry/URIs
+
+Then setup URI handling and a desktop entry.
+```bash
+sudo apt install vim
+vim ~/.local/share/applications/obsidian.desktop
+```
+Use the entry:
+```
+[Desktop Entry]
+Name=Obsidian
+Comment=A powerful knowledge base that works on top of a local folder of plain text Markdown files
+Exec=/home/benzipperer/obsidian/Obsidian.AppImage --no-sandbox %u
+Icon=/home/benzipperer/obsidian/icon.png
+Terminal=false
+Type=Application
+Version=1.8.10
+Categories=Office;Utility;
+MimeType=x-scheme-handler/obsidian;text/html;
+```
+Download icon file:
+```bash
+wget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/obsidian/icon.png
+```
+Update database and confirm it works
+```bash
+update-desktop-database ~/.local/share/applications/
+xdg-open "obsidian://new?vault=notes&name=note&content=content"
+```
+ ([source](https://amirrachum.com/obsidian-uri-linux/))
+
+## Other software
+
+### apt
+
+```bash
+suto apt install git
+```
+
+### Download Debs
+
+* [Positron](https://github.com/posit-dev/positron/releases)
+* [Slack](https://slack.com/downloads/linux)
+* [LibreOffice](https://launchpad.net/~libreoffice/+archive/ubuntu/ppa)
+
+### Flatpaks
+
+```bash
+sudo apt install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
+Reboot. Then install
+```bash
+flatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3
+```
+
+## Backups
+
+Use Pika to set up backups to new repository on backup server.

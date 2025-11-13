@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computer Setup Instructions",
+    "section": "",
+    "text": "sudo apt update && sudo apt -y upgrade\nReboot."
+  },
+  {
+    "objectID": "index.html#preliminaries",
+    "href": "index.html#preliminaries",
+    "title": "Computer Setup Instructions",
+    "section": "",
+    "text": "sudo apt update && sudo apt -y upgrade\nReboot."
+  },
+  {
+    "objectID": "index.html#dropbox-browser",
+    "href": "index.html#dropbox-browser",
+    "title": "Computer Setup Instructions",
+    "section": "Dropbox + browser",
+    "text": "Dropbox + browser\n\nDropbox + selective sync\nBrave + sync"
+  },
+  {
+    "objectID": "index.html#dotfiles",
+    "href": "index.html#dotfiles",
+    "title": "Computer Setup Instructions",
+    "section": "Dotfiles",
+    "text": "Dotfiles\nsudo apt install stow\ncd ~/Dropbox/dotfiles\n./install.sh\n./fix_ssh_perms.sh"
+  },
+  {
+    "objectID": "index.html#r",
+    "href": "index.html#r",
+    "title": "Computer Setup Instructions",
+    "section": "R",
+    "text": "R\n\nLatest release\nsudo apt install curl\nsudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg\nsudo sh -c 'echo \"deb http://rig.r-pkg.org/deb rig main\" &gt; /etc/apt/sources.list.d/rig.list'\nsudo apt update\nsudo apt install r-rig\nThen\nrig add release\n\n\nPackages\nConfirm R works and then in R confirm binaries are being downloaded from PPM:\ninstall.packages(\"usethis\")\nThen\npackages = c(\n  \"usethis\",\n  \"devtools\",\n  \"tidyverse\",\n  \"targets\",\n  \"tarchetypes\",\n  \"arrow\",\n  \"ipumsr\",\n  \"fs\",\n  \"crew\",\n  \"openalexR\"\n)\nr_univ_packages = c(\"epiextractr\", \"epidatatools\", \"realtalk\")\ngh_packages = c(\n  \"MilesMcBain/breakerofchains\",\n  \"benzipperer/bzipr\",\n  # includes some additions to Miles McBain's tflow:\n  \"benzipperer/tflow\"\n)\n\ninstall.packages(packages)\ninstall.packages(r_univ_packages, repos = c(\"https://economic.r-universe.dev\", \"https://cloud.r-project.org\"))\nremotes::install_github(gh_packages)\n\nfs::dir_create(\"~/data/cps\")\npurrr::walk(c(\"basic\", \"org\", \"may\"), ~ epiextractr::download_cps(.x, \"~/data/cps\"))"
+  },
+  {
+    "objectID": "index.html#tailscale",
+    "href": "index.html#tailscale",
+    "title": "Computer Setup Instructions",
+    "section": "Tailscale",
+    "text": "Tailscale\ncurl -fsSL https://tailscale.com/install.sh | sh\nConfirm ssh to machines works."
+  },
+  {
+    "objectID": "index.html#obsidian",
+    "href": "index.html#obsidian",
+    "title": "Computer Setup Instructions",
+    "section": "Obsidian",
+    "text": "Obsidian\n\nInstall and sync\nsudo apt install libfuse2\nFind path to Obsidian AppImage here, then\nmkdir -p ~/obsidian\nmkdir -p ~/projects\nwget OBSIDIANURL -O ~/obsidian/Obsidian.AppImage\nchmod +x ~/obsidian/Obsidian.AppImage\n~/obsidian/Obsidian.AppImage --no-sandbox\nSet up sync to ~/projects/obsidian.\n\n\nDesktop entry/URIs\nThen setup URI handling and a desktop entry.\nsudo apt install vim\nvim ~/.local/share/applications/obsidian.desktop\nUse the entry:\n[Desktop Entry]\nName=Obsidian\nComment=A powerful knowledge base that works on top of a local folder of plain text Markdown files\nExec=/home/benzipperer/obsidian/Obsidian.AppImage --no-sandbox %u\nIcon=/home/benzipperer/obsidian/icon.png\nTerminal=false\nType=Application\nVersion=1.8.10\nCategories=Office;Utility;\nMimeType=x-scheme-handler/obsidian;text/html;\nDownload icon file:\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/obsidian/icon.png\nUpdate database and confirm it works\nupdate-desktop-database ~/.local/share/applications/\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
+  },
+  {
+    "objectID": "index.html#other-software",
+    "href": "index.html#other-software",
+    "title": "Computer Setup Instructions",
+    "section": "Other software",
+    "text": "Other software\n\napt\nsuto apt install git\n\n\nDownload Debs\n\nPositron\nSlack\nLibreOffice\n\n\n\nFlatpaks\nsudo apt install flatpak\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+  },
+  {
+    "objectID": "index.html#backups",
+    "href": "index.html#backups",
+    "title": "Computer Setup Instructions",
+    "section": "Backups",
+    "text": "Backups\nUse Pika to set up backups to new repository on backup server."
+  }
+]
