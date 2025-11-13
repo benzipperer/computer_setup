@@ -141,17 +141,27 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 
 ## Other software
 
-### apt
+### via apt
 
 ```bash
-suto apt install git
+sudo add-apt-repository ppa:libreoffice/ppa
+```
+
+```bash
+sudo apt install git libreoffice
 ```
 
 ### Download Debs
 
 * [Positron](https://github.com/posit-dev/positron/releases)
 * [Slack](https://slack.com/downloads/linux)
-* [LibreOffice](https://launchpad.net/~libreoffice/+archive/ubuntu/ppa)
+* [Ghostty](https://github.com/mkasberg/ghostty-ubuntu)
+
+### claude code
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
 
 ### Flatpaks
 

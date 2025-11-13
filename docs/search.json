@@ -53,7 +53,7 @@
     "href": "index.html#other-software",
     "title": "Computer Setup Instructions",
     "section": "Other software",
-    "text": "Other software\n\napt\nsuto apt install git\n\n\nDownload Debs\n\nPositron\nSlack\nLibreOffice\n\n\n\nFlatpaks\nsudo apt install flatpak\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+    "text": "Other software\n\nvia apt\nsudo add-apt-repository ppa:libreoffice/ppa\nsudo apt install git libreoffice\n\n\nDownload Debs\n\nPositron\nSlack\nGhostty\n\n\n\nclaude code\ncurl -fsSL https://claude.ai/install.sh | bash\n\n\nFlatpaks\nsudo apt install flatpak\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
   },
   {
     "objectID": "index.html#backups",

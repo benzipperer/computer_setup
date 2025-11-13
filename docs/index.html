@@ -136,8 +136,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#other-software" id="toc-other-software" class="nav-link" data-scroll-target="#other-software">Other software</a>
   <ul class="collapse">
-  <li><a href="#apt" id="toc-apt" class="nav-link" data-scroll-target="#apt">apt</a></li>
+  <li><a href="#via-apt" id="toc-via-apt" class="nav-link" data-scroll-target="#via-apt">via apt</a></li>
   <li><a href="#download-debs" id="toc-download-debs" class="nav-link" data-scroll-target="#download-debs">Download Debs</a></li>
+  <li><a href="#claude-code" id="toc-claude-code" class="nav-link" data-scroll-target="#claude-code">claude code</a></li>
   <li><a href="#flatpaks" id="toc-flatpaks" class="nav-link" data-scroll-target="#flatpaks">Flatpaks</a></li>
   </ul></li>
   <li><a href="#backups" id="toc-backups" class="nav-link" data-scroll-target="#backups">Backups</a></li>
@@ -282,24 +283,29 @@ MimeType=x-scheme-handler/obsidian;text/html;</code></pre>
 </section>
 <section id="other-software" class="level2">
 <h2 class="anchored" data-anchor-id="other-software">Other software</h2>
-<section id="apt" class="level3">
-<h3 class="anchored" data-anchor-id="apt">apt</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">suto</span> apt install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="via-apt" class="level3">
+<h3 class="anchored" data-anchor-id="via-apt">via apt</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository ppa:libreoffice/ppa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install git libreoffice</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="download-debs" class="level3">
 <h3 class="anchored" data-anchor-id="download-debs">Download Debs</h3>
 <ul>
 <li><a href="https://github.com/posit-dev/positron/releases">Positron</a></li>
 <li><a href="https://slack.com/downloads/linux">Slack</a></li>
-<li><a href="https://launchpad.net/~libreoffice/+archive/ubuntu/ppa">LibreOffice</a></li>
+<li><a href="https://github.com/mkasberg/ghostty-ubuntu">Ghostty</a></li>
 </ul>
+</section>
+<section id="claude-code" class="level3">
+<h3 class="anchored" data-anchor-id="claude-code">claude code</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://claude.ai/install.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="flatpaks" class="level3">
 <h3 class="anchored" data-anchor-id="flatpaks">Flatpaks</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install flatpak</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">flatpak</span> remote-add <span class="at">--if-not-exists</span> flathub https://flathub.org/repo/flathub.flatpakrepo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install flatpak</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">flatpak</span> remote-add <span class="at">--if-not-exists</span> flathub https://flathub.org/repo/flathub.flatpakrepo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Reboot. Then install</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">flatpak</span> install org.gnome.World.PikaBackup nl.hjdskes.gcolor3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">flatpak</span> install org.gnome.World.PikaBackup nl.hjdskes.gcolor3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="backups" class="level2">
