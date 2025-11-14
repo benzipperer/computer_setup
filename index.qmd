@@ -12,9 +12,10 @@ format:
 ### Update everything
 
 ```bash
-sudo apt update && sudo apt -y upgrade
+sudo apt update && sudo apt upgrade -y
+sudo apt install zsh curl git stow -y
+chsh -s $(which zsh)
 ```
-
 Reboot.
 
 ## Dropbox + browser
@@ -22,27 +23,50 @@ Reboot.
 * [Dropbox](https://www.dropbox.com/install-linux?_tk=install_view) + selective sync
 * [Brave](https://brave.com/download/) + sync
 
+## Terminal
+
+### Ghostty
+
+```zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+```
+
+### glam up zsh
+
+```zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+```zsh
+sudo apt install fonts-powerline -y
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
 ## Dotfiles
 
-```bash
+```zsh
+# remove some config files
+mv ~/.zshrc ~/.zshrc.old
+mv ~/.config/ghostty/config ~/.config/ghostty/config.old
+# sync dotfiles
 sudo apt install stow
 cd ~/Dropbox/dotfiles
 ./install.sh
 ./fix_ssh_perms.sh
 ```
+
 ## R
 
 ### Latest release
 
-```bash
-sudo apt install curl
+```zsh
 sudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg
 sudo sh -c 'echo "deb http://rig.r-pkg.org/deb rig main" > /etc/apt/sources.list.d/rig.list'
 sudo apt update
 sudo apt install r-rig
 ```
 Then
-```bash
+```zsh
 rig add release
 ```
 
@@ -84,7 +108,7 @@ purrr::walk(c("basic", "org", "may"), ~ epiextractr::download_cps(.x, "~/data/cp
 
 ## Tailscale
 
-```bash
+```zsh
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 Confirm ssh to machines works.
@@ -93,12 +117,12 @@ Confirm ssh to machines works.
 
 ### Install and sync
 
-```bash
+```zsh
 sudo apt install libfuse2
 ```
 Find path to Obsidian AppImage [here](https://obsidian.md/download), then
 
- ```bash
+ ```zsh
  mkdir -p ~/obsidian
  mkdir -p ~/projects
  wget OBSIDIANURL -O ~/obsidian/Obsidian.AppImage
@@ -111,7 +135,7 @@ Set up sync to `~/projects/obsidian`.
 ### Desktop entry/URIs
 
 Then setup URI handling and a desktop entry.
-```bash
+```zsh
 sudo apt install vim
 vim ~/.local/share/applications/obsidian.desktop
 ```
@@ -129,11 +153,11 @@ Categories=Office;Utility;
 MimeType=x-scheme-handler/obsidian;text/html;
 ```
 Download icon file:
-```bash
+```zsh
 wget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/obsidian/icon.png
 ```
 Update database and confirm it works
-```bash
+```zsh
 update-desktop-database ~/.local/share/applications/
 xdg-open "obsidian://new?vault=notes&name=note&content=content"
 ```
@@ -143,12 +167,12 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 
 ### via apt
 
-```bash
+```zsh
 sudo add-apt-repository ppa:libreoffice/ppa
 ```
 
-```bash
-sudo apt install git libreoffice
+```zsh
+sudo apt install libreoffice
 ```
 
 ### Download Debs
@@ -159,18 +183,18 @@ sudo apt install git libreoffice
 
 ### claude code
 
-```bash
+```zsh
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 ### Flatpaks
 
-```bash
+```zsh
 sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 Reboot. Then install
-```bash
+```zsh
 flatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3
 ```
 

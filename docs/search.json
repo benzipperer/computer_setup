@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Computer Setup Instructions",
     "section": "",
-    "text": "sudo apt update && sudo apt -y upgrade\nReboot."
+    "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install zsh curl git stow -y\nchsh -s $(which zsh)\nReboot."
   },
   {
     "objectID": "index.html#preliminaries",
     "href": "index.html#preliminaries",
     "title": "Computer Setup Instructions",
     "section": "",
-    "text": "sudo apt update && sudo apt -y upgrade\nReboot."
+    "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install zsh curl git stow -y\nchsh -s $(which zsh)\nReboot."
   },
   {
     "objectID": "index.html#dropbox-browser",
@@ -21,18 +21,25 @@
     "text": "Dropbox + browser\n\nDropbox + selective sync\nBrave + sync"
   },
   {
+    "objectID": "index.html#terminal",
+    "href": "index.html#terminal",
+    "title": "Computer Setup Instructions",
+    "section": "terminal",
+    "text": "terminal\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\"\n\n\nzsh\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+  },
+  {
     "objectID": "index.html#dotfiles",
     "href": "index.html#dotfiles",
     "title": "Computer Setup Instructions",
     "section": "Dotfiles",
-    "text": "Dotfiles\nsudo apt install stow\ncd ~/Dropbox/dotfiles\n./install.sh\n./fix_ssh_perms.sh"
+    "text": "Dotfiles\n# remove some config files\nmv ~/.zshrc ~/.zshrc.old\nmv ~/.config/ghostty/config ~/.config/ghostty/config.old\n# sync dotfiles\nsudo apt install stow\ncd ~/Dropbox/dotfiles\n./install.sh\n./fix_ssh_perms.sh"
   },
   {
     "objectID": "index.html#r",
     "href": "index.html#r",
     "title": "Computer Setup Instructions",
     "section": "R",
-    "text": "R\n\nLatest release\nsudo apt install curl\nsudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg\nsudo sh -c 'echo \"deb http://rig.r-pkg.org/deb rig main\" &gt; /etc/apt/sources.list.d/rig.list'\nsudo apt update\nsudo apt install r-rig\nThen\nrig add release\n\n\nPackages\nConfirm R works and then in R confirm binaries are being downloaded from PPM:\ninstall.packages(\"usethis\")\nThen\npackages = c(\n  \"usethis\",\n  \"devtools\",\n  \"tidyverse\",\n  \"targets\",\n  \"tarchetypes\",\n  \"arrow\",\n  \"ipumsr\",\n  \"fs\",\n  \"crew\",\n  \"openalexR\"\n)\nr_univ_packages = c(\"epiextractr\", \"epidatatools\", \"realtalk\")\ngh_packages = c(\n  \"MilesMcBain/breakerofchains\",\n  \"benzipperer/bzipr\",\n  # includes some additions to Miles McBain's tflow:\n  \"benzipperer/tflow\"\n)\n\ninstall.packages(packages)\ninstall.packages(r_univ_packages, repos = c(\"https://economic.r-universe.dev\", \"https://cloud.r-project.org\"))\nremotes::install_github(gh_packages)\n\nfs::dir_create(\"~/data/cps\")\npurrr::walk(c(\"basic\", \"org\", \"may\"), ~ epiextractr::download_cps(.x, \"~/data/cps\"))"
+    "text": "R\n\nLatest release\nsudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg\nsudo sh -c 'echo \"deb http://rig.r-pkg.org/deb rig main\" &gt; /etc/apt/sources.list.d/rig.list'\nsudo apt update\nsudo apt install r-rig\nThen\nrig add release\n\n\nPackages\nConfirm R works and then in R confirm binaries are being downloaded from PPM:\ninstall.packages(\"usethis\")\nThen\npackages = c(\n  \"usethis\",\n  \"devtools\",\n  \"tidyverse\",\n  \"targets\",\n  \"tarchetypes\",\n  \"arrow\",\n  \"ipumsr\",\n  \"fs\",\n  \"crew\",\n  \"openalexR\"\n)\nr_univ_packages = c(\"epiextractr\", \"epidatatools\", \"realtalk\")\ngh_packages = c(\n  \"MilesMcBain/breakerofchains\",\n  \"benzipperer/bzipr\",\n  # includes some additions to Miles McBain's tflow:\n  \"benzipperer/tflow\"\n)\n\ninstall.packages(packages)\ninstall.packages(r_univ_packages, repos = c(\"https://economic.r-universe.dev\", \"https://cloud.r-project.org\"))\nremotes::install_github(gh_packages)\n\nfs::dir_create(\"~/data/cps\")\npurrr::walk(c(\"basic\", \"org\", \"may\"), ~ epiextractr::download_cps(.x, \"~/data/cps\"))"
   },
   {
     "objectID": "index.html#tailscale",
@@ -53,7 +60,7 @@
     "href": "index.html#other-software",
     "title": "Computer Setup Instructions",
     "section": "Other software",
-    "text": "Other software\n\nvia apt\nsudo add-apt-repository ppa:libreoffice/ppa\nsudo apt install git libreoffice\n\n\nDownload Debs\n\nPositron\nSlack\nGhostty\n\n\n\nclaude code\ncurl -fsSL https://claude.ai/install.sh | bash\n\n\nFlatpaks\nsudo apt install flatpak\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+    "text": "Other software\n\nvia apt\nsudo add-apt-repository ppa:libreoffice/ppa\nsudo apt install libreoffice\n\n\nDownload Debs\n\nPositron\nSlack\nGhostty\n\n\n\nclaude code\ncurl -fsSL https://claude.ai/install.sh | bash\n\n\nFlatpaks\nsudo apt install flatpak\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
   },
   {
     "objectID": "index.html#backups",
