@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Computer Setup Instructions",
     "section": "",
-    "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install zsh curl git stow -y\nchsh -s $(which zsh)\nReboot."
+    "text": "sudo apt update && sudo apt upgrade -y\nReboot."
   },
   {
-    "objectID": "index.html#preliminaries",
-    "href": "index.html#preliminaries",
+    "objectID": "index.html#update-everything",
+    "href": "index.html#update-everything",
     "title": "Computer Setup Instructions",
     "section": "",
-    "text": "sudo apt update && sudo apt upgrade -y\nsudo apt install zsh curl git stow -y\nchsh -s $(which zsh)\nReboot."
+    "text": "sudo apt update && sudo apt upgrade -y\nReboot."
   },
   {
     "objectID": "index.html#dropbox-browser",
@@ -21,18 +21,18 @@
     "text": "Dropbox + browser\n\nDropbox + selective sync\nBrave + sync"
   },
   {
-    "objectID": "index.html#terminal",
-    "href": "index.html#terminal",
-    "title": "Computer Setup Instructions",
-    "section": "terminal",
-    "text": "terminal\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\"\n\n\nzsh\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-  },
-  {
     "objectID": "index.html#dotfiles",
     "href": "index.html#dotfiles",
     "title": "Computer Setup Instructions",
     "section": "Dotfiles",
-    "text": "Dotfiles\n# remove some config files\nmv ~/.zshrc ~/.zshrc.old\nmv ~/.config/ghostty/config ~/.config/ghostty/config.old\n# sync dotfiles\nsudo apt install stow\ncd ~/Dropbox/dotfiles\n./install.sh\n./fix_ssh_perms.sh"
+    "text": "Dotfiles\n# sync dotfiles\nsudo apt install stow -y\ncd ~/Dropbox/dotfiles\n./install.sh\n./fix_ssh_perms.sh"
+  },
+  {
+    "objectID": "index.html#terminal",
+    "href": "index.html#terminal",
+    "title": "Computer Setup Instructions",
+    "section": "Terminal",
+    "text": "Terminal\n\nzsh\nsudo apt install zsh curl git -y\nchsh -s $(which zsh)\nLog in and out.\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\n\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\""
   },
   {
     "objectID": "index.html#r",
@@ -60,7 +60,7 @@
     "href": "index.html#other-software",
     "title": "Computer Setup Instructions",
     "section": "Other software",
-    "text": "Other software\n\nvia apt\nsudo add-apt-repository ppa:libreoffice/ppa\nsudo apt install libreoffice\n\n\nDownload Debs\n\nPositron\nSlack\nGhostty\n\n\n\nclaude code\ncurl -fsSL https://claude.ai/install.sh | bash\n\n\nFlatpaks\nsudo apt install flatpak\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+    "text": "Other software\n\nvia apt\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nDownload Debs\n\nPositron\nSlack\nGhostty\n\n\n\nclaude code\ncurl -fsSL https://claude.ai/install.sh | bash\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
   },
   {
     "objectID": "index.html#backups",
