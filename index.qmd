@@ -1,6 +1,6 @@
 ---
 title: "Computer Setup Instructions"
-subtitle: "Last used 11 November 2025, Ubuntu 24.04"
+subtitle: "Last used 14 November 2025, Ubuntu 24.04"
 format:
   html:
     code-fold: false
