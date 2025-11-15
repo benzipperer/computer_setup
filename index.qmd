@@ -34,7 +34,7 @@ cd ~/Dropbox/dotfiles
 
 ### zsh 
 ```bash
-sudo apt install zsh curl git -y
+sudo apt install zsh curl git vim -y
 chsh -s $(which zsh)
 ```
 Log in and out.
@@ -52,6 +52,13 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+```
+
+### Home directory structure
+
+```bash
+rmdir ~/Documents ~/Music ~/Templates ~/Videos
+mkdir data projects
 ```
 
 ## R
@@ -114,74 +121,55 @@ Confirm ssh to machines works.
 
 ## Obsidian
 
-### Install and sync
-
 ```bash
-sudo apt install libfuse2
+sudo apt install libfuse2 -y
 ```
 Find path to Obsidian AppImage [here](https://obsidian.md/download), then
 
  ```bash
- mkdir -p ~/obsidian
- mkdir -p ~/projects
- wget OBSIDIANURL -O ~/obsidian/Obsidian.AppImage
- chmod +x ~/obsidian/Obsidian.AppImage
- ~/obsidian/Obsidian.AppImage --no-sandbox
+ mkdir -p ~.local/bin/obsidian
+ wget OBSIDIANURL -O ~.local/bin/obsidian/Obsidian.AppImage
+ chmod +x ~.local/bin/obsidian/Obsidian.AppImage
+ wget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png
+ update-desktop-database ~/.local/share/applications/
  ```
 
-Set up sync to `~/projects/obsidian`.
+Confirm desktop entry and icon exist and sync vault to `~/projects/obsidian/notes`. 
 
-### Desktop entry/URIs
-
-Then setup URI handling and a desktop entry.
+Confirm URI handling works
 ```bash
-sudo apt install vim
-vim ~/.local/share/applications/obsidian.desktop
-```
-Use the entry:
-```
-[Desktop Entry]
-Name=Obsidian
-Comment=A powerful knowledge base that works on top of a local folder of plain text Markdown files
-Exec=/home/benzipperer/obsidian/Obsidian.AppImage --no-sandbox %u
-Icon=/home/benzipperer/obsidian/icon.png
-Terminal=false
-Type=Application
-Version=1.8.10
-Categories=Office;Utility;
-MimeType=x-scheme-handler/obsidian;text/html;
-```
-Download icon file:
-```bash
-wget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/obsidian/icon.png
-```
-Update database and confirm it works
-```bash
-update-desktop-database ~/.local/share/applications/
 xdg-open "obsidian://new?vault=notes&name=note&content=content"
 ```
  ([source](https://amirrachum.com/obsidian-uri-linux/))
 
 ## Other software
 
-### via apt
+### Libreoffice
 
 ```bash
 sudo add-apt-repository ppa:libreoffice/ppa -y
 sudo apt install libreoffice -y
 ```
 
-### Download Debs
+### Positron
 
-* [Positron](https://github.com/posit-dev/positron/releases)
-* [Slack](https://slack.com/downloads/linux)
-* [Ghostty](https://github.com/mkasberg/ghostty-ubuntu)
+Download .deb from [github](https://github.com/posit-dev/positron/releases).
 
-### claude code
+### Slack
 
+Download .deb from [slack](https://slack.com/downloads/instructions/linux?ddl=1&build=deb)
+
+### AI
+
+For claude code,
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
+For gemini, install [nvm](https://github.com/nvm-sh/nvm). Then
+```bash
+npm install -g @google/gemini-cli
+```
+
 
 ### Flatpaks
 

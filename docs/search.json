@@ -32,7 +32,7 @@
     "href": "index.html#terminal",
     "title": "Computer Setup Instructions",
     "section": "Terminal",
-    "text": "Terminal\n\nzsh\nsudo apt install zsh curl git -y\nchsh -s $(which zsh)\nLog in and out.\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\n\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\""
+    "text": "Terminal\n\nzsh\nsudo apt install zsh curl git vim -y\nchsh -s $(which zsh)\nLog in and out.\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\n\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\"\n\n\nHome directory structure\nrmdir ~/Documents ~/Music ~/Templates ~/Videos\nmkdir data projects"
   },
   {
     "objectID": "index.html#r",
@@ -53,14 +53,14 @@
     "href": "index.html#obsidian",
     "title": "Computer Setup Instructions",
     "section": "Obsidian",
-    "text": "Obsidian\n\nInstall and sync\nsudo apt install libfuse2\nFind path to Obsidian AppImage here, then\nmkdir -p ~/obsidian\nmkdir -p ~/projects\nwget OBSIDIANURL -O ~/obsidian/Obsidian.AppImage\nchmod +x ~/obsidian/Obsidian.AppImage\n~/obsidian/Obsidian.AppImage --no-sandbox\nSet up sync to ~/projects/obsidian.\n\n\nDesktop entry/URIs\nThen setup URI handling and a desktop entry.\nsudo apt install vim\nvim ~/.local/share/applications/obsidian.desktop\nUse the entry:\n[Desktop Entry]\nName=Obsidian\nComment=A powerful knowledge base that works on top of a local folder of plain text Markdown files\nExec=/home/benzipperer/obsidian/Obsidian.AppImage --no-sandbox %u\nIcon=/home/benzipperer/obsidian/icon.png\nTerminal=false\nType=Application\nVersion=1.8.10\nCategories=Office;Utility;\nMimeType=x-scheme-handler/obsidian;text/html;\nDownload icon file:\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/obsidian/icon.png\nUpdate database and confirm it works\nupdate-desktop-database ~/.local/share/applications/\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
+    "text": "Obsidian\nsudo apt install libfuse2 -y\nFind path to Obsidian AppImage here, then\nmkdir -p ~.local/bin/obsidian\nwget OBSIDIANURL -O ~.local/bin/obsidian/Obsidian.AppImage\nchmod +x ~.local/bin/obsidian/Obsidian.AppImage\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png\nupdate-desktop-database ~/.local/share/applications/\nConfirm desktop entry and icon exist and sync vault to ~/projects/obsidian/notes.\nConfirm URI handling works\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
   },
   {
     "objectID": "index.html#other-software",
     "href": "index.html#other-software",
     "title": "Computer Setup Instructions",
     "section": "Other software",
-    "text": "Other software\n\nvia apt\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nDownload Debs\n\nPositron\nSlack\nGhostty\n\n\n\nclaude code\ncurl -fsSL https://claude.ai/install.sh | bash\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+    "text": "Other software\n\nLibreoffice\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nPositron\nDownload .deb from github.\n\n\nSlack\nDownload .deb from slack\n\n\nAI\nFor claude code,\ncurl -fsSL https://claude.ai/install.sh | bash\nFor gemini, install nvm. Then\nnpm install -g @google/gemini-cli\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
   },
   {
     "objectID": "index.html#backups",
