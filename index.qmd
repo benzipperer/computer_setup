@@ -1,6 +1,5 @@
 ---
-title: "Computer Setup Instructions"
-subtitle: "Last used 14 November 2025, Ubuntu 24.04"
+title: "Computer setup Instructions"
 author: Ben Zipperer
 format:
   html:
@@ -8,6 +7,10 @@ format:
     code-tools:
       source: repo
 ---
+
+These are just notes to myself to make it easier to set up a new computer. But maybe they are useful to you too!
+
+*Last used: 14 November 2025, Ubuntu 24.04*
 
 ## Update everything
 
