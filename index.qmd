@@ -54,12 +54,25 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
 ```
 
-### Home directory structure
+## Home directory structure
 
 ```bash
 rmdir ~/Documents ~/Music ~/Templates ~/Videos
-mkdir data projects
+mkdir -p ~/data ~/projects ~/.fonts
 ```
+
+## Fonts
+```bash
+cd ~/.fonts
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+unzip -o JetBrainsMono.zip
+rm JetBrainsMono.zip
+unzip -o FiraCode.zip
+rm FiraCode.zip
+fc-cache -fv
+```
+
 
 ## R
 
