@@ -2,85 +2,92 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "",
-    "text": "These are just notes to myself to make it easier to set up a new computer. But maybe they are useful to you too!\nLast used: 14 November 2025, Ubuntu 24.04"
+    "text": "These are just notes to myself to make it easier to set up a new computer. But maybe they are useful to you too!\nLast used: 16 November 2025, Ubuntu 24.04"
   },
   {
     "objectID": "index.html#update-everything",
     "href": "index.html#update-everything",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Update everything",
     "text": "Update everything\nsudo apt update && sudo apt upgrade -y\nReboot."
   },
   {
     "objectID": "index.html#dropbox-browser",
     "href": "index.html#dropbox-browser",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Dropbox + browser",
     "text": "Dropbox + browser\n\nDropbox + selective sync\nBrave + sync"
   },
   {
     "objectID": "index.html#dotfiles",
     "href": "index.html#dotfiles",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Dotfiles",
     "text": "Dotfiles\n# sync dotfiles\nsudo apt install stow -y\ncd ~/Dropbox/dotfiles\n./install.sh\n./fix_ssh_perms.sh"
   },
   {
     "objectID": "index.html#terminal",
     "href": "index.html#terminal",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Terminal",
-    "text": "Terminal\n\nzsh\nsudo apt install zsh curl git vim -y\nchsh -s $(which zsh)\nLog in and out.\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\n\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\""
+    "text": "Terminal\n\nzsh\nsudo apt install zsh curl git -y\nchsh -s $(which zsh)\nLog in and out.\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\n\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\""
   },
   {
     "objectID": "index.html#home-directory-structure",
     "href": "index.html#home-directory-structure",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Home directory structure",
     "text": "Home directory structure\nrmdir ~/Documents ~/Music ~/Templates ~/Videos\nmkdir -p ~/data ~/projects ~/.fonts"
   },
   {
     "objectID": "index.html#fonts",
     "href": "index.html#fonts",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Fonts",
     "text": "Fonts\ncd ~/.fonts\ncurl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip\ncurl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip\nunzip -o JetBrainsMono.zip\nrm JetBrainsMono.zip\nunzip -o FiraCode.zip\nrm FiraCode.zip\nfc-cache -fv"
   },
   {
     "objectID": "index.html#r",
     "href": "index.html#r",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "R",
     "text": "R\n\nLatest release\nsudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg\nsudo sh -c 'echo \"deb http://rig.r-pkg.org/deb rig main\" &gt; /etc/apt/sources.list.d/rig.list'\nsudo apt update\nsudo apt install r-rig\nThen\nrig add release\n\n\nPackages\nConfirm R works and then in R confirm binaries are being downloaded from PPM:\ninstall.packages(\"usethis\")\nThen\npackages = c(\n  \"usethis\",\n  \"devtools\",\n  \"tidyverse\",\n  \"targets\",\n  \"tarchetypes\",\n  \"arrow\",\n  \"ipumsr\",\n  \"fs\",\n  \"crew\",\n  \"openalexR\"\n)\nr_univ_packages = c(\"epiextractr\", \"epidatatools\", \"realtalk\")\ngh_packages = c(\n  \"MilesMcBain/breakerofchains\",\n  \"benzipperer/bzipr\",\n  # includes some additions to Miles McBain's tflow:\n  \"benzipperer/tflow\"\n)\n\ninstall.packages(packages)\ninstall.packages(r_univ_packages, repos = c(\"https://economic.r-universe.dev\", \"https://cloud.r-project.org\"))\nremotes::install_github(gh_packages)\n\nfs::dir_create(\"~/data/cps\")\npurrr::walk(c(\"basic\", \"org\", \"may\"), ~ epiextractr::download_cps(.x, \"~/data/cps\"))"
   },
   {
     "objectID": "index.html#tailscale",
     "href": "index.html#tailscale",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Tailscale",
     "text": "Tailscale\ncurl -fsSL https://tailscale.com/install.sh | sh\nConfirm ssh to machines works."
   },
   {
     "objectID": "index.html#obsidian",
     "href": "index.html#obsidian",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Obsidian",
     "text": "Obsidian\nsudo apt install libfuse2 -y\nFind path to Obsidian AppImage here, then\nmkdir -p ~.local/bin/obsidian\nwget OBSIDIANURL -O ~.local/bin/obsidian/Obsidian.AppImage\nchmod +x ~.local/bin/obsidian/Obsidian.AppImage\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png\nupdate-desktop-database ~/.local/share/applications/\nConfirm desktop entry and icon exist and sync vault to ~/projects/obsidian/notes.\nConfirm URI handling works\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
   },
   {
     "objectID": "index.html#other-software",
     "href": "index.html#other-software",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Other software",
-    "text": "Other software\n\nLibreoffice\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nPositron\nDownload .deb from github.\n\n\nSlack\nDownload .deb from slack\n\n\nAI\nFor claude code,\ncurl -fsSL https://claude.ai/install.sh | bash\nFor gemini, install nvm. Then\nnpm install -g @google/gemini-cli\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+    "text": "Other software\n\nMisc utilities\nsudo apt install vim pigz -y\n\n\nLibreoffice\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nPositron\nDownload .deb from github.\n\n\nSlack\nDownload .deb from slack\n\n\nSignal\nwget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor &gt; signal-desktop-keyring.gpg\ncat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg &gt; /dev/null\nwget -O signal-desktop.sources https://updates.signal.org/static/desktop/apt/signal-desktop.sources\ncat signal-desktop.sources | sudo tee /etc/apt/sources.list.d/signal-desktop.sources &gt; /dev/null\nsudo apt update && sudo apt install signal-desktop -y\n(source)\n\n\nAI\nFor claude code,\ncurl -fsSL https://claude.ai/install.sh | bash\nFor gemini, install nvm. Then\nnpm install -g @google/gemini-cli\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
   },
   {
     "objectID": "index.html#backups",
     "href": "index.html#backups",
-    "title": "Computer setup Instructions",
+    "title": "Computer setup instructions",
     "section": "Backups",
     "text": "Backups\nUse Pika to set up backups to new repository on backup server."
+  },
+  {
+    "objectID": "index.html#update-firmware",
+    "href": "index.html#update-firmware",
+    "title": "Computer setup instructions",
+    "section": "Update firmware",
+    "text": "Update firmware\nConfirm system booted in UEFI mode:\ntest -d /sys/firmware/efi && echo \"UEFI boot OK\" || echo \"Not UEFI\"\nConfirm EFI system partition mounted at /boot/efi:\nfindmnt /boot/efi\nConnect to AC power and check for updates:\nfwupdmgr refresh --force\nfwupdmgr get-updates\nApply updates one by one:\nfwupdmgr update\nReboot if necessary and confirm updates:\nget-history"
   }
 ]

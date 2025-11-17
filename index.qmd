@@ -1,5 +1,5 @@
 ---
-title: "Computer setup Instructions"
+title: "Computer setup instructions"
 author: Ben Zipperer
 format:
   html:
@@ -10,7 +10,7 @@ format:
 
 These are just notes to myself to make it easier to set up a new computer. But maybe they are useful to you too!
 
-*Last used: 14 November 2025, Ubuntu 24.04*
+*Last used: 16 November 2025, Ubuntu 24.04*
 
 ## Update everything
 
@@ -38,7 +38,7 @@ cd ~/Dropbox/dotfiles
 
 ### zsh 
 ```bash
-sudo apt install zsh curl git vim -y
+sudo apt install zsh curl git -y
 chsh -s $(which zsh)
 ```
 Log in and out.
@@ -76,7 +76,6 @@ unzip -o FiraCode.zip
 rm FiraCode.zip
 fc-cache -fv
 ```
-
 
 ## R
 
@@ -161,6 +160,11 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 
 ## Other software
 
+### Misc utilities
+```bash
+sudo apt install vim pigz -y
+```
+
 ### Libreoffice
 
 ```bash
@@ -176,6 +180,17 @@ Download .deb from [github](https://github.com/posit-dev/positron/releases).
 
 Download .deb from [slack](https://slack.com/downloads/instructions/linux?ddl=1&build=deb)
 
+### Signal
+
+```bash
+wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+wget -O signal-desktop.sources https://updates.signal.org/static/desktop/apt/signal-desktop.sources
+cat signal-desktop.sources | sudo tee /etc/apt/sources.list.d/signal-desktop.sources > /dev/null
+sudo apt update && sudo apt install signal-desktop -y
+```
+([source](https://signal.org/download))
+
 ### AI
 
 For claude code,
@@ -186,7 +201,6 @@ For gemini, install [nvm](https://github.com/nvm-sh/nvm). Then
 ```bash
 npm install -g @google/gemini-cli
 ```
-
 
 ### Flatpaks
 
@@ -202,3 +216,31 @@ flatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3
 ## Backups
 
 Use Pika to set up backups to new repository on backup server.
+
+## Update firmware
+
+Confirm system booted in UEFI mode:
+```bash
+test -d /sys/firmware/efi && echo "UEFI boot OK" || echo "Not UEFI"
+```
+
+Confirm EFI system partition mounted at `/boot/efi`:
+
+```bash
+findmnt /boot/efi
+```
+Connect to AC power and check for updates: 
+```bash
+fwupdmgr refresh --force
+fwupdmgr get-updates
+```
+
+Apply updates one by one:
+```bash
+fwupdmgr update
+```
+
+Reboot if necessary and confirm updates:
+```bash
+get-history
+```
