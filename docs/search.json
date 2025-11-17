@@ -81,6 +81,6 @@
     "href": "index.html#update-firmware",
     "title": "Computer setup instructions",
     "section": "Update firmware",
-    "text": "Update firmware\nConfirm system booted in UEFI mode:\ntest -d /sys/firmware/efi && echo \"UEFI boot OK\" || echo \"Not UEFI\"\nConfirm EFI system partition mounted at /boot/efi:\nfindmnt /boot/efi\nConnect to AC power and check for updates:\nfwupdmgr refresh --force\nfwupdmgr get-updates\nApply updates one by one:\nfwupdmgr update\nReboot if necessary and confirm updates:\nget-history"
+    "text": "Update firmware\nConfirm system booted in UEFI mode:\ntest -d /sys/firmware/efi && echo \"UEFI boot OK\" || echo \"Not UEFI\"\nConfirm EFI system partition mounted at /boot/efi:\nfindmnt /boot/efi\nConnect to AC power and check for updates:\nfwupdmgr refresh --force\nfwupdmgr get-updates\nApply updates one by one:\nfwupdmgr update\nReboot if necessary and confirm updates:\nget-history\n(source)"
   }
 ]

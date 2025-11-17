@@ -248,3 +248,4 @@ Reboot if necessary and confirm updates:
 ```bash
 get-history
 ```
+([source](https://linuxblog.io/upgrade-thinkpad-firmware-linux-fwupd/))
