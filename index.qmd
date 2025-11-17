@@ -110,7 +110,8 @@ packages = c(
   "ipumsr",
   "fs",
   "crew",
-  "openalexR"
+  "openalexR",
+  "janitor"
 )
 r_univ_packages = c("epiextractr", "epidatatools", "realtalk")
 gh_packages = c(
