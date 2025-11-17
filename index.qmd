@@ -58,23 +58,18 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
 ```
 
+## Tailscale
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+```
+Confirm ssh to machines works.
+
 ## Home directory structure
 
 ```bash
 rmdir ~/Documents ~/Music ~/Templates ~/Videos
 mkdir -p ~/data ~/projects ~/.fonts
-```
-
-## Fonts
-```bash
-cd ~/.fonts
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
-unzip -o JetBrainsMono.zip
-rm JetBrainsMono.zip
-unzip -o FiraCode.zip
-rm FiraCode.zip
-fc-cache -fv
 ```
 
 ## R
@@ -111,7 +106,8 @@ packages = c(
   "fs",
   "crew",
   "openalexR",
-  "janitor"
+  "janitor",
+  "bea.R"
 )
 r_univ_packages = c("epiextractr", "epidatatools", "realtalk")
 gh_packages = c(
@@ -128,13 +124,6 @@ remotes::install_github(gh_packages)
 fs::dir_create("~/data/cps")
 purrr::walk(c("basic", "org", "may"), ~ epiextractr::download_cps(.x, "~/data/cps"))
 ```
-
-## Tailscale
-
-```bash
-curl -fsSL https://tailscale.com/install.sh | sh
-```
-Confirm ssh to machines works.
 
 ## Obsidian
 
@@ -159,11 +148,25 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 ```
  ([source](https://amirrachum.com/obsidian-uri-linux/))
 
-## Other software
+## Other stuff
 
 ### Misc utilities
+
 ```bash
 sudo apt install vim pigz -y
+```
+
+### Fonts
+
+```bash
+cd ~/.fonts
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+unzip -o JetBrainsMono.zip
+rm JetBrainsMono.zip
+unzip -o FiraCode.zip
+rm FiraCode.zip
+fc-cache -fv
 ```
 
 ### Libreoffice

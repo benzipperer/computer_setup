@@ -35,6 +35,13 @@
     "text": "Terminal\n\nzsh\nsudo apt install zsh curl git -y\nchsh -s $(which zsh)\nLog in and out.\nsh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\nsudo apt install fonts-powerline -y\ngit clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\n\n\nGhostty\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)\""
   },
   {
+    "objectID": "index.html#tailscale",
+    "href": "index.html#tailscale",
+    "title": "Computer setup instructions",
+    "section": "Tailscale",
+    "text": "Tailscale\ncurl -fsSL https://tailscale.com/install.sh | sh\nConfirm ssh to machines works."
+  },
+  {
     "objectID": "index.html#home-directory-structure",
     "href": "index.html#home-directory-structure",
     "title": "Computer setup instructions",
@@ -42,25 +49,11 @@
     "text": "Home directory structure\nrmdir ~/Documents ~/Music ~/Templates ~/Videos\nmkdir -p ~/data ~/projects ~/.fonts"
   },
   {
-    "objectID": "index.html#fonts",
-    "href": "index.html#fonts",
-    "title": "Computer setup instructions",
-    "section": "Fonts",
-    "text": "Fonts\ncd ~/.fonts\ncurl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip\ncurl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip\nunzip -o JetBrainsMono.zip\nrm JetBrainsMono.zip\nunzip -o FiraCode.zip\nrm FiraCode.zip\nfc-cache -fv"
-  },
-  {
     "objectID": "index.html#r",
     "href": "index.html#r",
     "title": "Computer setup instructions",
     "section": "R",
-    "text": "R\n\nLatest release\nsudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg\nsudo sh -c 'echo \"deb http://rig.r-pkg.org/deb rig main\" &gt; /etc/apt/sources.list.d/rig.list'\nsudo apt update\nsudo apt install r-rig\nThen\nrig add release\n\n\nPackages\nConfirm R works and then in R confirm binaries are being downloaded from PPM:\ninstall.packages(\"usethis\")\nThen\npackages = c(\n  \"usethis\",\n  \"devtools\",\n  \"tidyverse\",\n  \"targets\",\n  \"tarchetypes\",\n  \"arrow\",\n  \"ipumsr\",\n  \"fs\",\n  \"crew\",\n  \"openalexR\"\n)\nr_univ_packages = c(\"epiextractr\", \"epidatatools\", \"realtalk\")\ngh_packages = c(\n  \"MilesMcBain/breakerofchains\",\n  \"benzipperer/bzipr\",\n  # includes some additions to Miles McBain's tflow:\n  \"benzipperer/tflow\"\n)\n\ninstall.packages(packages)\ninstall.packages(r_univ_packages, repos = c(\"https://economic.r-universe.dev\", \"https://cloud.r-project.org\"))\nremotes::install_github(gh_packages)\n\nfs::dir_create(\"~/data/cps\")\npurrr::walk(c(\"basic\", \"org\", \"may\"), ~ epiextractr::download_cps(.x, \"~/data/cps\"))"
-  },
-  {
-    "objectID": "index.html#tailscale",
-    "href": "index.html#tailscale",
-    "title": "Computer setup instructions",
-    "section": "Tailscale",
-    "text": "Tailscale\ncurl -fsSL https://tailscale.com/install.sh | sh\nConfirm ssh to machines works."
+    "text": "R\n\nLatest release\nsudo curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg\nsudo sh -c 'echo \"deb http://rig.r-pkg.org/deb rig main\" &gt; /etc/apt/sources.list.d/rig.list'\nsudo apt update\nsudo apt install r-rig\nThen\nrig add release\n\n\nPackages\nConfirm R works and then in R confirm binaries are being downloaded from PPM:\ninstall.packages(\"usethis\")\nThen\npackages = c(\n  \"usethis\",\n  \"devtools\",\n  \"tidyverse\",\n  \"targets\",\n  \"tarchetypes\",\n  \"arrow\",\n  \"ipumsr\",\n  \"fs\",\n  \"crew\",\n  \"openalexR\",\n  \"janitor\",\n  \"bea.R\"\n)\nr_univ_packages = c(\"epiextractr\", \"epidatatools\", \"realtalk\")\ngh_packages = c(\n  \"MilesMcBain/breakerofchains\",\n  \"benzipperer/bzipr\",\n  # includes some additions to Miles McBain's tflow:\n  \"benzipperer/tflow\"\n)\n\ninstall.packages(packages)\ninstall.packages(r_univ_packages, repos = c(\"https://economic.r-universe.dev\", \"https://cloud.r-project.org\"))\nremotes::install_github(gh_packages)\n\nfs::dir_create(\"~/data/cps\")\npurrr::walk(c(\"basic\", \"org\", \"may\"), ~ epiextractr::download_cps(.x, \"~/data/cps\"))"
   },
   {
     "objectID": "index.html#obsidian",
@@ -70,11 +63,11 @@
     "text": "Obsidian\nsudo apt install libfuse2 -y\nFind path to Obsidian AppImage here, then\nmkdir -p ~.local/bin/obsidian\nwget OBSIDIANURL -O ~.local/bin/obsidian/Obsidian.AppImage\nchmod +x ~.local/bin/obsidian/Obsidian.AppImage\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png\nupdate-desktop-database ~/.local/share/applications/\nConfirm desktop entry and icon exist and sync vault to ~/projects/obsidian/notes.\nConfirm URI handling works\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
   },
   {
-    "objectID": "index.html#other-software",
-    "href": "index.html#other-software",
+    "objectID": "index.html#other-stuff",
+    "href": "index.html#other-stuff",
     "title": "Computer setup instructions",
-    "section": "Other software",
-    "text": "Other software\n\nMisc utilities\nsudo apt install vim pigz -y\n\n\nLibreoffice\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nPositron\nDownload .deb from github.\n\n\nSlack\nDownload .deb from slack\n\n\nSignal\nwget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor &gt; signal-desktop-keyring.gpg\ncat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg &gt; /dev/null\nwget -O signal-desktop.sources https://updates.signal.org/static/desktop/apt/signal-desktop.sources\ncat signal-desktop.sources | sudo tee /etc/apt/sources.list.d/signal-desktop.sources &gt; /dev/null\nsudo apt update && sudo apt install signal-desktop -y\n(source)\n\n\nAI\nFor claude code,\ncurl -fsSL https://claude.ai/install.sh | bash\nFor gemini, install nvm. Then\nnpm install -g @google/gemini-cli\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
+    "section": "Other stuff",
+    "text": "Other stuff\n\nMisc utilities\nsudo apt install vim pigz -y\n\n\nFonts\ncd ~/.fonts\ncurl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip\ncurl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip\nunzip -o JetBrainsMono.zip\nrm JetBrainsMono.zip\nunzip -o FiraCode.zip\nrm FiraCode.zip\nfc-cache -fv\n\n\nLibreoffice\nsudo add-apt-repository ppa:libreoffice/ppa -y\nsudo apt install libreoffice -y\n\n\nPositron\nDownload .deb from github.\n\n\nSlack\nDownload .deb from slack\n\n\nSignal\nwget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor &gt; signal-desktop-keyring.gpg\ncat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg &gt; /dev/null\nwget -O signal-desktop.sources https://updates.signal.org/static/desktop/apt/signal-desktop.sources\ncat signal-desktop.sources | sudo tee /etc/apt/sources.list.d/signal-desktop.sources &gt; /dev/null\nsudo apt update && sudo apt install signal-desktop -y\n(source)\n\n\nAI\nFor claude code,\ncurl -fsSL https://claude.ai/install.sh | bash\nFor gemini, install nvm. Then\nnpm install -g @google/gemini-cli\n\n\nFlatpaks\nsudo apt install flatpak -y\nflatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo\nReboot. Then install\nflatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3"
   },
   {
     "objectID": "index.html#backups",
