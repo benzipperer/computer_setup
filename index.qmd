@@ -96,18 +96,19 @@ install.packages("usethis")
 Then
 ```r
 packages = c(
-  "usethis",
-  "devtools",
-  "tidyverse",
-  "targets",
-  "tarchetypes",
   "arrow",
-  "ipumsr",
-  "fs",
+  "bea.R",
   "crew",
-  "openalexR",
+  "devtools",
+  "fixest",
+  "fs",
+  "ipumsr",
   "janitor",
-  "bea.R"
+  "openalexR",
+  "tarchetypes",
+  "targets",
+  "tidyverse",
+  "usethis"
 )
 r_univ_packages = c("epiextractr", "epidatatools", "realtalk")
 gh_packages = c(
