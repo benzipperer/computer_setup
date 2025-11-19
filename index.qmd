@@ -106,6 +106,7 @@ packages = c(
   "janitor",
   "openalexR",
   "patchwork",
+  "quantreg",
   "tarchetypes",
   "targets",
   "tidyverse",
