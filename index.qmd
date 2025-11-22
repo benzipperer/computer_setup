@@ -104,6 +104,7 @@ packages = c(
   "fs",
   "ipumsr",
   "janitor",
+  "modelsummary",
   "openalexR",
   "patchwork",
   "quantreg",
@@ -156,7 +157,7 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 ### Misc utilities
 
 ```bash
-sudo apt install vim pigz -y
+sudo apt install vim pigz python3-venv python3-pip -y
 ```
 
 ### Fonts
