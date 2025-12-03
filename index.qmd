@@ -108,6 +108,7 @@ packages = c(
   "openalexR",
   "patchwork",
   "quantreg",
+  "slider",
   "tarchetypes",
   "targets",
   "tidyverse",
