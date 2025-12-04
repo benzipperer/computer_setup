@@ -10,7 +10,7 @@ format:
 
 These are just notes to myself to make it easier to set up a new computer. But maybe they are useful to you too!
 
-*Last used: 16 November 2025, Ubuntu 24.04*
+*Last used: 4 December 2025, Ubuntu 24.04*
 
 ## Update everything
 
@@ -227,6 +227,9 @@ flatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3
 ```bash
 curl -fsSL https://vicinae.com/install.sh | bash
 ```
+
+Install the GNOME [extension](https://extensions.gnome.org/extension/8594/vicinae/) and create keyboard shortcut.
+
 
 ## Backups
 
