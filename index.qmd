@@ -222,6 +222,12 @@ Reboot. Then install
 flatpak install org.gnome.World.PikaBackup nl.hjdskes.gcolor3
 ```
 
+### vicinae
+
+```bash
+curl -fsSL https://vicinae.com/install.sh | bash
+```
+
 ## Backups
 
 Use Pika to set up backups to new repository on backup server.
