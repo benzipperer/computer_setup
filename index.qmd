@@ -10,7 +10,7 @@ format:
 
 These are just notes to myself to make it easier to set up a new computer. But maybe they are useful to you too!
 
-*Last used: 4 December 2025, Ubuntu 24.04*
+*Last updated: 30 January 2026, Ubuntu 24.04*
 
 ## Update everything
 
@@ -158,7 +158,7 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 ### Misc utilities
 
 ```bash
-sudo apt install vim pigz python3-venv python3-pip -y
+sudo apt install vim pigz python3-venv python3-pip htop -y
 ```
 
 ### Fonts
