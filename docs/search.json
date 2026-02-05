@@ -60,7 +60,7 @@
     "href": "index.html#obsidian",
     "title": "Computer setup instructions",
     "section": "Obsidian",
-    "text": "Obsidian\nsudo apt install libfuse2 -y\nFind path to Obsidian AppImage here, then\nmkdir -p ~.local/bin/obsidian\nwget OBSIDIANURL -O ~.local/bin/obsidian/Obsidian.AppImage\nchmod +x ~.local/bin/obsidian/Obsidian.AppImage\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png\nupdate-desktop-database ~/.local/share/applications/\nConfirm desktop entry and icon exist and sync vault to ~/projects/obsidian/notes.\nConfirm URI handling works\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
+    "text": "Obsidian\nsudo apt install libfuse2 -y\nFind path to Obsidian AppImage here, then\nmkdir -p ~/.local/bin/obsidian\nwget OBSIDIANURL -O ~/.local/bin/obsidian/Obsidian.AppImage\nchmod +x ~/.local/bin/obsidian/Obsidian.AppImage\nwget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png\nupdate-desktop-database ~/.local/share/applications/\nConfirm desktop entry and icon exist and sync vault to ~/projects/obsidian/notes.\nConfirm URI handling works\nxdg-open \"obsidian://new?vault=notes&name=note&content=content\"\n(source)"
   },
   {
     "objectID": "index.html#other-stuff",

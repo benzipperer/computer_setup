@@ -283,9 +283,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="obsidian">Obsidian</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install libfuse2 <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Find path to Obsidian AppImage <a href="https://obsidian.md/download">here</a>, then</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~.local/bin/obsidian</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> OBSIDIANURL <span class="at">-O</span> ~.local/bin/obsidian/Obsidian.AppImage</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~.local/bin/obsidian/Obsidian.AppImage</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.local/bin/obsidian</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> OBSIDIANURL <span class="at">-O</span> ~/.local/bin/obsidian/Obsidian.AppImage</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ~/.local/bin/obsidian/Obsidian.AppImage</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png <span class="at">-O</span> ~/.local/bin/obsidian/icon.png</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">update-desktop-database</span> ~/.local/share/applications/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Confirm desktop entry and icon exist and sync vault to <code>~/projects/obsidian/notes</code>.</p>

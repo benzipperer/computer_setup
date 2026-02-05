@@ -138,9 +138,9 @@ sudo apt install libfuse2 -y
 Find path to Obsidian AppImage [here](https://obsidian.md/download), then
 
  ```bash
- mkdir -p ~.local/bin/obsidian
- wget OBSIDIANURL -O ~.local/bin/obsidian/Obsidian.AppImage
- chmod +x ~.local/bin/obsidian/Obsidian.AppImage
+ mkdir -p ~/.local/bin/obsidian
+ wget OBSIDIANURL -O ~/.local/bin/obsidian/Obsidian.AppImage
+ chmod +x ~/.local/bin/obsidian/Obsidian.AppImage
  wget https://forum.obsidian.md/uploads/default/optimized/2X/6/6df43bc4ee96f0a1b67ff3600caf6879b758a743_2_500x500.png -O ~/.local/bin/obsidian/icon.png
  update-desktop-database ~/.local/share/applications/
  ```
