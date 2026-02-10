@@ -158,7 +158,11 @@ xdg-open "obsidian://new?vault=notes&name=note&content=content"
 ### Misc utilities
 
 ```bash
-sudo apt install vim pigz python3-venv python3-pip htop -y
+sudo apt install vim pigz python3-venv python3-pip htop fd-find ripgrep -y
+```
+
+```bash
+ln -s $(which fdfind) ~/.local/bin/fd
 ```
 
 ### Fonts
